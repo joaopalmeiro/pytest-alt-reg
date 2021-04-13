@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pytest-alt-reg"
+version = "0.0.1"
+description = "A PyTest plugin to create regression tests for Altair charts."
+authors = ["João Palmeiro <joaommpalmeiro@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+pytest = "^3.5.0"
+altair = "^4.1.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins.pytest11]
+alt-reg = "pytest_alt_reg.plugin"
