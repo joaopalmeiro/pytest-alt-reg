@@ -6,6 +6,8 @@ from .utils import json_loader, make_location_message
 
 
 def check_spec_files(obtained_filename, expected_filename):
+    __tracebackhide__ = True
+
     obtained_spec = json_loader(obtained_filename)
     expected_spec = json_loader(expected_filename)
 

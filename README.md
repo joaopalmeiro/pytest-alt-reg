@@ -1,6 +1,6 @@
 # pytest-alt-reg
 
-A PyTest plugin to create regression tests for Altair charts.
+A pytest plugin to create regression tests for Altair charts.
 
 ## References
 
@@ -17,3 +17,5 @@ A PyTest plugin to create regression tests for Altair charts.
 - `poetry add pytest@^3.5.0`.
 - `pytest -s tests` (show the prints).
 - [jsondiff](https://github.com/xlwings/jsondiff) package (by xlwings).
+- pytest:
+  - [Temporary directories and files](https://docs.pytest.org/en/stable/tmpdir.html) (`tmpdir` fixture).

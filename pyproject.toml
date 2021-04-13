@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pytest-alt-reg"
 version = "0.0.1"
-description = "A PyTest plugin to create regression tests for Altair charts."
+description = "A pytest plugin to create regression tests for Altair charts."
 authors = ["João Palmeiro <joaommpalmeiro@gmail.com>"]
 license = "MIT"
 

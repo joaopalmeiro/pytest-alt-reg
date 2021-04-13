@@ -25,4 +25,3 @@ def datadir(request):
 @pytest.fixture
 def chart_regression(datadir, request):
     return ChartRegressionFixture(datadir, request)
-
