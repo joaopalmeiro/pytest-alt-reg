@@ -2,6 +2,7 @@ import re
 
 import pytest
 
+from .constants import TO_BE_COMPARED_SUFFIX
 from .utils import json_loader, make_location_message
 
 
@@ -16,14 +17,15 @@ def check_spec_files(obtained_filename, expected_filename):
 
 
 def perform_regression_check(
-    datadir, request, dump_fn, extension, force_regen=False,
+    datadir, request, dump_fn, extension,
 ):
     __tracebackhide__ = True
 
     basename = re.sub(r"[\W]", "_", request.node.name)
     filename = datadir / (basename + extension)
 
-    force_regen = force_regen or request.config.getoption("force_regen")
+    force_regen = request.config.getoption("force_regen")
+    # print(force_regen)
 
     if not filename.is_file():
         filename.parent.mkdir(parents=True, exist_ok=True)
@@ -35,7 +37,7 @@ def perform_regression_check(
         )
         pytest.fail(msg)
     else:
-        obtained_filename = filename.with_suffix(".obtained" + extension)
+        obtained_filename = filename.with_suffix(f"{TO_BE_COMPARED_SUFFIX}{extension}")
 
         dump_fn(obtained_filename)
 

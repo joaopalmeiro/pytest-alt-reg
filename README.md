@@ -19,3 +19,6 @@ A pytest plugin to create regression tests for Altair charts.
 - [jsondiff](https://github.com/xlwings/jsondiff) package (by xlwings).
 - pytest:
   - [Temporary directories and files](https://docs.pytest.org/en/stable/tmpdir.html) (`tmpdir` fixture).
+- [altair_recipes](https://github.com/piccolbo/altair_recipes):
+  - `regtest.write(alt.Chart.from_dict(round_floats(plot.to_dict(), 13)).to_json())`.
+- [Boltons](https://github.com/mahmoud/boltons) (utility package).

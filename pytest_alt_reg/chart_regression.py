@@ -1,26 +1,21 @@
-import json
+from functools import partial
 
 from .common import perform_regression_check
 from .constants import JSON_EXTENSION
+from .utils import altair_dumper
 
 
 class ChartRegressionFixture:
     def __init__(self, datadir, request):
         self.request = request
         self.datadir = datadir
-        self.force_regen = False
 
     def check(self, chart):
         __tracebackhide__ = True
 
-        def dump(filename):
-            with open(filename, "w", encoding="utf-8") as file:
-                json.dump(chart, file, ensure_ascii=False, indent=2)
-
         perform_regression_check(
             datadir=self.datadir,
             request=self.request,
-            dump_fn=dump,
+            dump_fn=partial(altair_dumper, chart=chart),
             extension=JSON_EXTENSION,
-            force_regen=self.force_regen,
         )
