@@ -33,7 +33,8 @@ def perform_regression_check(
         dump_fn(filename)
 
         msg = make_location_message(
-            "File not found in the data directory. Created:", filename
+            "Spec not found in the respective data directory. Baseline created at:",
+            filename,
         )
         pytest.fail(msg)
     else:
@@ -44,4 +45,13 @@ def perform_regression_check(
         try:
             check_spec_files(obtained_filename, filename)
         except AssertionError:
-            raise
+            if force_regen:
+                dump_fn(filename)
+
+                msg = make_location_message(
+                    "Specs differ and --force-regen is set. Baseline recreated at:",
+                    filename,
+                )
+                pytest.fail(msg)
+            else:
+                raise
